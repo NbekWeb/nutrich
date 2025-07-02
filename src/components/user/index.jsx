@@ -87,6 +87,7 @@ const UserPage = () => {
   }
 
   const handleClose = () => setOpen(false)
+
   useEffect(() => {
     const access_token = localStorage.getItem('access_token')
 
