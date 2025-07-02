@@ -17,7 +17,7 @@
  */
 const themeConfig = {
   templateName: 'Nutrich.io',
-  homePageUrl: '/home',
+  homePageUrl: '/user',
   settingsCookieName: 'vuexy-mui-next-demo-1',
   mode: 'system', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
