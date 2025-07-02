@@ -26,7 +26,7 @@ function createAxiosResponseInterceptor() {
   const interceptor = instance.interceptors.response.use(
     response => response,
     error => {
-      if (error.status == 401) {
+      if (error.status == 401 || error.response.status) {
         const access_token = localStorage.getItem('access_token')
 
         if (access_token) {

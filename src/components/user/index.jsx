@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import { useRouter } from 'next/navigation'
 
@@ -19,7 +19,6 @@ import TextField from '@mui/material/TextField'
 
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
-
 
 import Box from '@mui/material/Box'
 import ModeEditIcon from '@mui/icons-material/ModeEdit'
@@ -75,8 +74,8 @@ const UserPage = () => {
     }
 
     setErrors(newErrors)
-    
-return Object.keys(newErrors).length === 0
+
+    return Object.keys(newErrors).length === 0
   }
 
   const handleSubmit = () => {
@@ -88,9 +87,15 @@ return Object.keys(newErrors).length === 0
   }
 
   const handleClose = () => setOpen(false)
+  useEffect(() => {
+    const access_token = localStorage.getItem('access_token')
 
-  
-return (
+    if (!access_token) {
+      router.push('/login')
+    }
+  }, [])
+
+  return (
     <>
       <Card>
         <CardContent className='xl:!plb-16 xl:pli-[6.25rem] pbs-10 pbe-5 pli-5 sm:p-16'>
