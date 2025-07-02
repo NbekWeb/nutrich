@@ -1,12 +1,14 @@
 import { create } from 'zustand'
 
 import { toast } from 'react-toastify'
+
 import { api } from '@/utils/api'
 import useCoreStore from './useCoreStore'
 
 const useAuthStore = create(() => ({
   loginApi: (data, callback = () => {}) => {
     const { addLoadingUrl, removeLoadingUrl } = useCoreStore.getState()
+
     addLoadingUrl('signin/')
 
     api({
@@ -28,6 +30,7 @@ const useAuthStore = create(() => ({
   },
   registerApi: (data, callback = () => {}) => {
     const { addLoadingUrl, removeLoadingUrl } = useCoreStore.getState()
+
     addLoadingUrl('signup/')
     api({
       url: 'signup/',

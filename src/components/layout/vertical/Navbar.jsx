@@ -2,10 +2,11 @@
 
 'use client'
 
+import { useEffect } from 'react'
+
 import LayoutNavbar from '@layouts/components/vertical/Navbar'
 import NavbarContent from './NavbarContent'
 import useUserStore from '@/store/useUserStore'
-import { useEffect } from 'react'
 
 const Navbar = () => {
   const { getUser } = useUserStore()
@@ -13,7 +14,8 @@ const Navbar = () => {
   useEffect(() => {
     getUser()
   }, [])
-  return (
+  
+return (
     <LayoutNavbar>
       <NavbarContent />
     </LayoutNavbar>

@@ -1,6 +1,9 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+
+import { useRouter } from 'next/navigation'
+
 import { toast } from 'react-toastify'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -16,7 +19,6 @@ import CircularProgress from '@mui/material/CircularProgress'
 import IconButton from '@mui/material/IconButton'
 import PhotoCamera from '@mui/icons-material/PhotoCamera'
 
-import { useRouter } from 'next/navigation'
 import useUserStore from '@/store/useUserStore'
 import useCoreStore from '@/store/useCoreStore'
 
@@ -35,6 +37,7 @@ const UserEditPage = () => {
     age: '',
     goal: ''
   })
+
   const [errors, setErrors] = useState({})
 
   useEffect(() => {
@@ -58,21 +61,25 @@ const UserEditPage = () => {
 
   const handleNumericInput = (field, rawValue) => {
     let cleaned = rawValue.replace(/[^\d]/g, '')
+
     if (cleaned !== '') cleaned = String(parseInt(cleaned, 10))
     handleChange(field, cleaned)
   }
 
   const handleAvatarChange = event => {
     const file = event.target.files?.[0]
+
     if (!file) return
 
     const reader = new FileReader()
+
     reader.onloadend = () => {
       setForm(prev => ({
         ...prev,
         avatar: reader.result // base64 string
       }))
     }
+
     reader.readAsDataURL(file)
   }
 
@@ -88,7 +95,8 @@ const UserEditPage = () => {
     if (!form.goal) newErrors.goal = 'Goal is required'
 
     setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    
+return Object.keys(newErrors).length === 0
   }
 
   const handleSubmit = () => {

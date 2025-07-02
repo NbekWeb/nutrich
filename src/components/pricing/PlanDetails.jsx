@@ -1,4 +1,6 @@
 // MUI Imports
+import { useRouter } from 'next/navigation'
+
 import Chip from '@mui/material/Chip'
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
@@ -6,19 +8,23 @@ import CardContent from '@mui/material/CardContent'
 
 // Third-party Imports
 import classnames from 'classnames'
+
 import useUserStore from '@/store/useUserStore'
-import { useRouter } from 'next/navigation'
 
 const PlanDetails = ({ data, popular = false }) => {
-  const { buyTokePrice } = useUserStore()
+  const { buyTokePrice, getUser } = useUserStore()
   const router = useRouter()
 
   function buyToken(id) {
     buyTokePrice({ token: id }, () => {
-      router.push('/user')
+      getUser(() => {
+        router.push('/user')
+      })
     })
   }
-  return (
+
+  
+return (
     <CardContent
       className={classnames('relative border rounded pli-5 pbs-[3.75rem] flex flex-col gap-5', {
         'border-primary': popular

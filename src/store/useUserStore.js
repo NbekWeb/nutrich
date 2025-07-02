@@ -1,6 +1,8 @@
 import { create } from 'zustand'
-import { api } from '@/utils/api'
+
 import { toast } from 'react-toastify'
+
+import { api } from '@/utils/api'
 import useCoreStore from './useCoreStore'
 
 const useUserStore = create(set => ({
@@ -11,6 +13,7 @@ const useUserStore = create(set => ({
 
   getUser: (callback = () => {}) => {
     const { addLoadingUrl, removeLoadingUrl } = useCoreStore.getState()
+
     addLoadingUrl('user-detail/')
     api({
       url: 'user-detail/',
@@ -46,6 +49,7 @@ const useUserStore = create(set => ({
   },
   putUser: (data, callback) => {
     const { addLoadingUrl, removeLoadingUrl } = useCoreStore.getState()
+
     addLoadingUrl('user-detail/')
 
     let requestData
@@ -66,9 +70,11 @@ const useUserStore = create(set => ({
         for (let offset = 0; offset < byteCharacters.length; offset += 512) {
           const slice = byteCharacters.slice(offset, offset + 512)
           const byteNumbers = new Array(slice.length)
+
           for (let i = 0; i < slice.length; i++) {
             byteNumbers[i] = slice.charCodeAt(i)
           }
+
           byteArrays.push(new Uint8Array(byteNumbers))
         }
 
@@ -79,6 +85,7 @@ const useUserStore = create(set => ({
         if (key === 'avatar') {
           const contentType = value.substring(5, value.indexOf(';'))
           const blob = base64ToBlob(value, contentType)
+
           formData.append('avatar', blob, 'avatar.png')
         } else {
           formData.append(key, value)
@@ -89,6 +96,7 @@ const useUserStore = create(set => ({
       headers['Content-Type'] = 'multipart/form-data'
     } else {
       const { avatar, ...rest } = data
+
       requestData = rest
     }
 
@@ -111,6 +119,7 @@ const useUserStore = create(set => ({
   },
   shareToken: (data, callback) => {
     const { addLoadingUrl, removeLoadingUrl } = useCoreStore.getState()
+
     addLoadingUrl('gift-tokens/')
     api({
       url: 'gift-tokens/',
@@ -127,6 +136,7 @@ const useUserStore = create(set => ({
         } else {
           toast.error('Failed to fetch user data')
         }
+
         console.log(er)
       })
       .finally(() => {
@@ -135,6 +145,7 @@ const useUserStore = create(set => ({
   },
   getTokenPrice: () => {
     const { addLoadingUrl, removeLoadingUrl } = useCoreStore.getState()
+
     addLoadingUrl('pricing-tokens/')
     api({
       url: 'pricing-tokens/',
@@ -150,6 +161,7 @@ const useUserStore = create(set => ({
   },
   buyTokePrice: (data, callback) => {
     const { addLoadingUrl, removeLoadingUrl } = useCoreStore.getState()
+
     addLoadingUrl('pricing-tokens/')
     api({
       url: 'buy-tokens/',
@@ -167,6 +179,7 @@ const useUserStore = create(set => ({
   },
   getTokenHystory: () => {
     const { addLoadingUrl, removeLoadingUrl } = useCoreStore.getState()
+
     addLoadingUrl('token-history/')
     api({
       url: 'token-history/',
@@ -182,6 +195,7 @@ const useUserStore = create(set => ({
   },
   getTokenShared: () => {
     const { addLoadingUrl, removeLoadingUrl } = useCoreStore.getState()
+
     addLoadingUrl('gift-history/')
     api({
       url: 'gift-history/',

@@ -48,6 +48,7 @@ const RegisterIllustration = styled('img')(({ theme }) => ({
     maxBlockSize: 450
   }
 }))
+
 const MaskImg = styled('img')({
   blockSize: 'auto',
   maxBlockSize: 355,
@@ -73,6 +74,7 @@ const Info = ({ mode }) => {
 
   const handleNumericInput = (field, rawValue) => {
     let cleaned = rawValue.replace(/[^\d]/g, '') // Remove non-digits
+
     if (cleaned !== '') cleaned = String(parseInt(cleaned, 10)) // Remove leading zeros
     handleChange(field, cleaned)
   }
@@ -81,8 +83,10 @@ const Info = ({ mode }) => {
     setForm(prev => ({ ...prev, [field]: value }))
     setErrors(prev => ({ ...prev, [field]: '' }))
   }
+
   const validateForm = () => {
     const newErrors = {}
+
     if (!form.height) newErrors.height = 'Height is required'
     if (!form.weight) newErrors.weight = 'Weight is required'
     if (!form.gender) newErrors.gender = 'Gender is required'
@@ -90,10 +94,13 @@ const Info = ({ mode }) => {
     if (!form.goal) newErrors.goal = 'Goal is required'
 
     setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    
+return Object.keys(newErrors).length === 0
   }
+
   const handleSubmit = e => {
     e.preventDefault()
+
     if (validateForm()) {
       putUser({ ...user, ...form }, () => {
         router.push('/user')
@@ -130,7 +137,8 @@ const Info = ({ mode }) => {
   useEffect(() => {
     getUser(() => {})
   }, [])
-  return (
+  
+return (
     <div className='flex bs-full justify-center'>
       <div
         className={classnames(

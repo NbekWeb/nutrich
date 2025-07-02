@@ -5,6 +5,7 @@ import { SettingsProvider } from '@core/contexts/settingsContext'
 import ThemeProvider from '@components/theme'
 import AppReactToastify from '@/libs/styles/AppReactToastify'
 import 'react-toastify/dist/ReactToastify.css'
+
 // Util Imports
 import { getMode, getSettingsFromCookie, getSystemMode } from '@core/utils/serverHelpers'
 

@@ -6,12 +6,14 @@ const useCoreStore = create((set, get) => ({
 
   addLoadingUrl: url => {
     const updated = new Set(get().loadingUrl)
+
     updated.add(url)
     set({ loadingUrl: updated })
   },
 
   removeLoadingUrl: url => {
     const updated = new Set(get().loadingUrl)
+
     updated.delete(url)
     set({ loadingUrl: updated })
   },

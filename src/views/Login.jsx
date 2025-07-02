@@ -19,6 +19,8 @@ import Divider from '@mui/material/Divider'
 import classnames from 'classnames'
 
 // Component Imports
+import CircularProgress from '@mui/material/CircularProgress'
+
 import Link from '@components/Link'
 import Logo from '@components/layout/shared/Logo'
 import CustomTextField from '@core/components/mui/TextField'
@@ -32,7 +34,6 @@ import { useSettings } from '@core/hooks/useSettings'
 
 import useAuthStore from '@/store/useAuthStore'
 import useCoreStore from '@/store/useCoreStore'
-import CircularProgress from '@mui/material/CircularProgress'
 
 // Styled Custom Components
 const LoginIllustration = styled('img')(({ theme }) => ({
@@ -61,6 +62,7 @@ const MaskImg = styled('img')({
 const LoginV2 = ({ mode }) => {
   const { loginApi } = useAuthStore()
   const { loadingUrl } = useCoreStore()
+
   // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
 
@@ -83,10 +85,13 @@ const LoginV2 = ({ mode }) => {
     if (!form.password.trim()) newErrors.password = 'Password is required'
 
     setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    
+return Object.keys(newErrors).length === 0
   }
+
   const handleSubmit = e => {
     e.preventDefault()
+
     if (validateForm()) {
       loginApi({ password: form.password, identifier: form.email }, () => {
         router.push('/user')

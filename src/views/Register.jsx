@@ -48,6 +48,7 @@ const RegisterIllustration = styled('img')(({ theme }) => ({
     maxBlockSize: 450
   }
 }))
+
 const MaskImg = styled('img')({
   blockSize: 'auto',
   maxBlockSize: 355,
@@ -79,11 +80,13 @@ const Register = ({ mode }) => {
     setForm(prev => ({ ...prev, [field]: value }))
     setErrors(prev => ({ ...prev, [field]: '' }))
   }
+
   const validateForm = () => {
     const newErrors = {}
 
     if (!form.first_name.trim()) newErrors.first_name = 'First name is required'
     if (!form.last_name.trim()) newErrors.last_name = 'Last name is required'
+
     if (!form.email.trim()) {
       newErrors.email = 'Email is required'
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
@@ -91,6 +94,7 @@ const Register = ({ mode }) => {
     }
 
     if (!form.password) newErrors.password = 'Password is required'
+
     if (!form.password_confirm) {
       newErrors.password_confirm = 'Please confirm your password'
     } else if (form.password !== form.password_confirm) {
@@ -104,6 +108,7 @@ const Register = ({ mode }) => {
 
   const handleSubmit = e => {
     e.preventDefault()
+
     if (validateForm()) {
       registerApi({ ...form }, () => {
         loginApi({ identifier: form.email, password: form.password }, () => {

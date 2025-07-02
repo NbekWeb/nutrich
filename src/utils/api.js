@@ -1,11 +1,14 @@
 import axios from 'axios'
+
 const instance = axios.create({
   baseURL: `${process.env.NEXT_PUBLIC_API_URL}`
 })
 
 export const api = ({ url, open = false, ...props }) => {
   let token = localStorage.getItem('access_token') ? `${localStorage.getItem('access_token')}` : null
+
   if (token) token = `Bearer ${token}`
+
   if (!open) {
     props.headers = {
       ...props.headers,
@@ -24,14 +27,18 @@ function createAxiosResponseInterceptor() {
     response => response,
     error => {
       console.log(error)
+
       if (error.response.status == 401) {
         const access_token = localStorage.getItem('access_token')
+
         if (access_token) {
           Clear()
         }
       }
+
       axios.interceptors.response.eject(interceptor)
-      return Promise.reject(error)
+      
+return Promise.reject(error)
     }
   )
 }
@@ -39,7 +46,8 @@ function createAxiosResponseInterceptor() {
 function Clear() {
   localStorage.removeItem('access_token')
   window.location.href = '/login'
-  return null
+  
+return null
 }
 
 createAxiosResponseInterceptor()

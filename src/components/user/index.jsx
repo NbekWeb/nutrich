@@ -1,5 +1,9 @@
 'use client'
 
+import { useState } from 'react'
+
+import { useRouter } from 'next/navigation'
+
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Avatar from '@mui/material/Avatar'
@@ -13,14 +17,15 @@ import DialogContent from '@mui/material/DialogContent'
 import DialogActions from '@mui/material/DialogActions'
 import TextField from '@mui/material/TextField'
 
-import useUserStore from '@/store/useUserStore'
-import useCoreStore from '@/store/useCoreStore'
-import { useState } from 'react'
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
-import { useRouter } from 'next/navigation'
+
+
 import Box from '@mui/material/Box'
 import ModeEditIcon from '@mui/icons-material/ModeEdit'
+
+import useCoreStore from '@/store/useCoreStore'
+import useUserStore from '@/store/useUserStore'
 
 const UserPage = () => {
   const { user, shareToken, getUser } = useUserStore()
@@ -44,9 +49,11 @@ const UserPage = () => {
 
   const handleNumericInput = (field, rawValue) => {
     let cleaned = rawValue.replace(/[^\d]/g, '')
+
     if (cleaned !== '') cleaned = String(parseInt(cleaned, 10))
     handleChange(field, cleaned)
   }
+
   const handleChange = (field, value) => {
     if (field === 'receiver') setReceiver(value)
     if (field === 'amount') setAmount(value)
@@ -56,6 +63,7 @@ const UserPage = () => {
     const newErrors = {}
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
     if (!receiver.trim()) {
       newErrors.receiver = 'Receiver is required'
     } else if (!emailRegex.test(receiver.trim())) {
@@ -67,7 +75,8 @@ const UserPage = () => {
     }
 
     setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
+    
+return Object.keys(newErrors).length === 0
   }
 
   const handleSubmit = () => {
@@ -79,7 +88,9 @@ const UserPage = () => {
   }
 
   const handleClose = () => setOpen(false)
-  return (
+
+  
+return (
     <>
       <Card>
         <CardContent className='xl:!plb-16 xl:pli-[6.25rem] pbs-10 pbe-5 pli-5 sm:p-16'>

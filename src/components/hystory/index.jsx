@@ -1,15 +1,17 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+
 import { Grid, Card, CardContent, Typography, Divider } from '@mui/material'
 import dayjs from 'dayjs'
 
-import useUserStore from '@/store/useUserStore'
-import useCoreStore from '@/store/useCoreStore'
 import Backdrop from '@mui/material/Backdrop'
 import CircularProgress from '@mui/material/CircularProgress'
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 import { red, green, blue } from '@mui/material/colors'
+
+import useCoreStore from '@/store/useCoreStore'
+import useUserStore from '@/store/useUserStore'
 
 const HistoryPage = () => {
   const { loadingUrl } = useCoreStore()
@@ -22,7 +24,9 @@ const HistoryPage = () => {
 
   const renderCard = item => {
     const color = blue[500]
-    return (
+
+    
+return (
       <Card
         variant='outlined'
         style={{

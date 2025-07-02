@@ -36,6 +36,7 @@ const BadgeContentSpan = styled('span')({
 
 const UserDropdown = () => {
   const { user } = useUserStore()
+
   // States
   const [open, setOpen] = useState(false)
 
