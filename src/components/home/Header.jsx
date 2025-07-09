@@ -49,8 +49,6 @@ const Header = ({ onModeChange }) => {
 
   // Mode o'zgarishini kuzatish
   useEffect(() => {
-    console.log("Mode o'zgardi:", settings.mode)
-
     // Mode o'zgarganida bajariladigan qo'shimcha amallar
     localStorage.setItem('lastMode', settings.mode)
     document.documentElement.setAttribute('data-mode', settings.mode)

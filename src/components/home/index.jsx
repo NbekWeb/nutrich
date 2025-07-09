@@ -41,7 +41,7 @@ const LandingPage = () => {
       <FeaturesSection mode={mode} />
       <ServicesSection mode={mode} />
       <StatisticsSection mode={mode} />
-      <PricingSection mode={mode} />
+      {/* <PricingSection mode={mode} /> */}
       <TestimonialsSection mode={mode} />
       <FAQSection mode={mode} />
       <CTASection mode={mode} />
