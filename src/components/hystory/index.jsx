@@ -20,13 +20,12 @@ const HistoryPage = () => {
   useEffect(() => {
     getTokenHystory()
     getTokenShared()
-  }, [])
+  }, [getTokenHystory, getTokenShared])
 
   const renderCard = item => {
     const color = blue[500]
 
-    
-return (
+    return (
       <Card
         variant='outlined'
         style={{

@@ -13,7 +13,7 @@ const UserAgent = () => {
     if (token) {
       getUser()
     }
-  }, [])
+  }, [getUser])
 
   return null
 }

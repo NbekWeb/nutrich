@@ -11,10 +11,8 @@ import CircularProgress from '@mui/material/CircularProgress'
 
 import Pricing from '@/components/pricing/Main'
 
-
 import useUserStore from '@/store/useUserStore'
 import useCoreStore from '@/store/useCoreStore'
-
 
 const PricingPage = ({ title = true }) => {
   const { loadingUrl } = useCoreStore()
@@ -22,9 +20,9 @@ const PricingPage = ({ title = true }) => {
 
   useEffect(() => {
     getTokenPrice()
-  }, [])
-  
-return (
+  }, [getTokenPrice])
+
+  return (
     <>
       <Card>
         <CardContent className='xl:!plb-16 xl:pli-[6.25rem] pbs-10 pbe-5 pli-5 sm:p-16'>

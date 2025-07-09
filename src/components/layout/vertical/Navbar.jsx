@@ -13,9 +13,9 @@ const Navbar = () => {
 
   useEffect(() => {
     getUser()
-  }, [])
-  
-return (
+  }, [getUser])
+
+  return (
     <LayoutNavbar>
       <NavbarContent />
     </LayoutNavbar>

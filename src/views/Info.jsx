@@ -94,8 +94,8 @@ const Info = ({ mode }) => {
     if (!form.goal) newErrors.goal = 'Goal is required'
 
     setErrors(newErrors)
-    
-return Object.keys(newErrors).length === 0
+
+    return Object.keys(newErrors).length === 0
   }
 
   const handleSubmit = e => {
@@ -136,9 +136,9 @@ return Object.keys(newErrors).length === 0
 
   useEffect(() => {
     getUser(() => {})
-  }, [])
-  
-return (
+  }, [getUser])
+
+  return (
     <div className='flex bs-full justify-center'>
       <div
         className={classnames(

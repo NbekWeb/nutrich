@@ -1,6 +1,9 @@
 'use client'
 
 import { useEffect } from 'react'
+
+import { useRouter } from 'next/navigation'
+
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
@@ -9,11 +12,7 @@ import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import { useTheme } from '@mui/material/styles'
-import PricingPage from '@/components/pricing'
-import React from 'react'
-import { useRouter } from 'next/navigation'
 
-// Icons
 import CheckCircleIcon from '@mui/icons-material/CheckCircle'
 import StarIcon from '@mui/icons-material/Star'
 import PeopleIcon from '@mui/icons-material/People'
@@ -24,6 +23,8 @@ import FamilyRestroomIcon from '@mui/icons-material/FamilyRestroom'
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome'
 import SupportIcon from '@mui/icons-material/Support'
 
+import PricingPage from '@/components/pricing'
+
 export const metadata = {
   title: 'Nutrich.io - What to Eat, Now You Know',
   description:
@@ -32,6 +33,7 @@ export const metadata = {
 
 const Header = () => {
   const router = useRouter()
+
   return (
     <header className='bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm'>
       <nav className='container mx-auto px-6 py-4 flex justify-between items-center'>
@@ -226,7 +228,7 @@ const LandingPage = () => {
       icon: <FamilyRestroomIcon sx={{ fontSize: 40, color: '#007CF0' }} />,
       title: 'For Families & Couples',
       description:
-        'Finally solve the "what to cook for everyone" problem. Our Family Plan service generates shared meals with clever recipe changes for everyone.'
+        'Finally solve the &ldquo;what to cook for everyone&rdquo; problem. Our Family Plan service generates shared meals with clever recipe changes for everyone.'
     },
     {
       icon: <FitnessCenterIcon sx={{ fontSize: 40, color: '#007CF0' }} />,
@@ -408,9 +410,9 @@ const LandingPage = () => {
             </Typography>
             <Typography variant='body1' sx={{ color: 'text.secondary', maxWidth: '800px', mx: 'auto' }}>
               Our key strategic objective is to be more than just a website you visit once. We aim to transform our
-              service from a "one-time plan generator" into your "daily nutrition assistant". We believe that true
-              health is an ongoing journey, which is why our AI provides interactive tools that adapt to your life,
-              empowering you to build lasting, healthy habits on your own terms.
+              service from a &ldquo;one-time plan generator&rdquo; into your &ldquo;daily nutrition assistant&rdquo;. We
+              believe that true health is an ongoing journey, which is why our AI provides interactive tools that adapt
+              to your life, empowering you to build lasting, healthy habits on your own terms.
             </Typography>
           </Box>
         </Container>
@@ -424,7 +426,7 @@ const LandingPage = () => {
               Designed For Your Unique Life
             </Typography>
             <Typography variant='body1' sx={{ color: 'text.secondary', maxWidth: '600px', mx: 'auto' }}>
-              Whether you're a busy professional, a family manager, or a fitness enthusiast, nutrich.io is built to
+              Whether you&apos;re a busy professional, a family manager, or a fitness enthusiast, nutrich.io is built to
               adapt to your specific needs.
             </Typography>
           </Box>
@@ -455,8 +457,8 @@ const LandingPage = () => {
               A Smarter Way to Plan Your Day
             </Typography>
             <Typography variant='body1' sx={{ color: 'text.secondary', maxWidth: '800px', mx: 'auto' }}>
-              Go beyond static "one-time" plans. Our service is designed to be your daily partner in health, providing
-              dynamic and intelligent solutions for every nutritional challenge.
+              Go beyond static &ldquo;one-time&rdquo; plans. Our service is designed to be your daily partner in health,
+              providing dynamic and intelligent solutions for every nutritional challenge.
             </Typography>
           </Box>
           <Grid container spacing={4}>
@@ -579,7 +581,7 @@ const LandingPage = () => {
               <Grid item xs={12} md={4} key={index}>
                 <Card sx={{ p: 4, bgcolor: 'grey.50', height: '100%' }}>
                   <Typography variant='body2' sx={{ color: 'text.secondary', mb: 3 }}>
-                    "{testimonial.text}"
+                    &ldquo;{testimonial.text}&rdquo;
                   </Typography>
                   <Box>
                     <Typography variant='subtitle1' sx={{ fontWeight: 'bold' }}>
@@ -605,7 +607,8 @@ const LandingPage = () => {
               Frequently Asked Questions
             </Typography>
             <Typography variant='body1' sx={{ color: 'text.secondary', maxWidth: '600px', mx: 'auto' }}>
-              Have questions? We've got answers. If you can't find what you're looking for, feel free to contact us.
+              Have questions? We&apos;ve got answers. If you can&apos;t find what you&apos;re looking for, feel free to
+              contact us.
             </Typography>
           </Box>
           <Box sx={{ maxWidth: '800px', mx: 'auto' }}>

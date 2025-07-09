@@ -94,7 +94,7 @@ const UserPage = () => {
     if (!access_token) {
       router.push('/login')
     }
-  }, [])
+  }, [router])
 
   return (
     <>

@@ -7,6 +7,9 @@ import '@/app/globals.css'
 // Generated Icon CSS Imports
 import '@assets/iconify-icons/generated-icons.css'
 
+// Component Imports
+import AuthGuard from '@/components/AuthGuard'
+
 export const metadata = {
   title: 'Nutrich.io',
   description: 'des'
@@ -18,7 +21,9 @@ const RootLayout = ({ children }) => {
 
   return (
     <html id='__next' lang='en' dir={direction}>
-      <body className='flex is-full min-bs-full flex-auto flex-col'>{children}</body>
+      <body className='flex is-full min-bs-full flex-auto flex-col'>
+        <AuthGuard>{children}</AuthGuard>
+      </body>
     </html>
   )
 }
