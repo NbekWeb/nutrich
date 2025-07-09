@@ -31,9 +31,7 @@ function createAxiosResponseInterceptor() {
 
         if (access_token) {
           Clear()
-        } else {
-          window.location.href = '/login'
-        }
+        } 
       }
 
       axios.interceptors.response.eject(interceptor)

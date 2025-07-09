@@ -10,6 +10,7 @@ import CardContent from '@mui/material/CardContent'
 import classnames from 'classnames'
 
 import useUserStore from '@/store/useUserStore'
+import styles from './PlanDetails.module.css'
 
 const PlanDetails = ({ data, popular = false }) => {
   const { buyTokePrice, getUser } = useUserStore()
@@ -23,12 +24,23 @@ const PlanDetails = ({ data, popular = false }) => {
     })
   }
 
-  
-return (
+  return (
     <CardContent
-      className={classnames('relative border rounded pli-5 pbs-[3.75rem] flex flex-col gap-5', {
-        'border-primary': popular
-      })}
+      className={classnames('relative flex flex-col gap-5')}
+      sx={{
+        border: popular ? '2px solid' : '1px solid',
+        borderColor: popular ? 'primary.main' : 'grey.300',
+        borderRadius: 3,
+        p: popular ? 6 : 4,
+        minHeight: popular ? 480 : 420,
+        boxShadow: popular ? 4 : 1,
+        position: 'relative',
+        zIndex: popular ? 2 : 1,
+        backgroundColor: 'background.paper',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'space-between'
+      }}
     >
       {popular ? (
         <Chip
@@ -53,8 +65,12 @@ return (
           </Typography>
         </div>
       </div>
-
-      <Button fullWidth color='primary' variant={popular ? 'contained' : 'tonal'} onClick={() => buyToken(data?.id)}>
+      <div style={{ flex: 1 }} />
+      <Button
+        fullWidth
+        className={!popular ? styles['gray-btn'] : styles['gradient-btn']}
+        onClick={() => buyToken(data?.id)}
+      >
         Purchase ${parseFloat(data?.price).toFixed(2).replace(/\.00$/, '')}
       </Button>
     </CardContent>

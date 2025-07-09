@@ -16,7 +16,7 @@ import useUserStore from '@/store/useUserStore'
 import useCoreStore from '@/store/useCoreStore'
 
 
-const PricingPage = () => {
+const PricingPage = ({ title = true }) => {
   const { loadingUrl } = useCoreStore()
   const { pricingTokens, getTokenPrice } = useUserStore()
 
@@ -28,7 +28,7 @@ return (
     <>
       <Card>
         <CardContent className='xl:!plb-16 xl:pli-[6.25rem] pbs-10 pbe-5 pli-5 sm:p-16'>
-          <Pricing data={pricingTokens} />
+          <Pricing data={pricingTokens} title={title} />
         </CardContent>
       </Card>
       <Backdrop

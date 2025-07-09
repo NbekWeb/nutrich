@@ -1,0 +1,29 @@
+.gradient-btn {
+  background: linear-gradient(90deg, #1976d2 0%, #26c6da 100%);
+  color: #fff !important;
+  box-shadow: 0 4px 24px 0 rgba(76, 110, 245, 0.12);
+  border: none;
+  min-height: 50px;
+}
+
+.gray-btn {
+  background: #e5e7eb;
+  color: #232a36;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: none;
+  border: none;
+  transition: background 0.2s;
+  min-height: 50px;
+}
+.gray-btn:hover {
+  background: #d1d5db;
+}
+
+[data-mui-color-scheme='dark'] .gray-btn {
+  background: #35385a;
+  color: #e5e7eb;
+}
+[data-mui-color-scheme='dark'] .gray-btn:hover {
+  background: #232544;
+}
