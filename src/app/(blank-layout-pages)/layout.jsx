@@ -1,5 +1,4 @@
 // Component Imports
-import Providers from '@components/Providers'
 import BlankLayout from '@layouts/BlankLayout'
 
 // Util Imports
@@ -10,11 +9,7 @@ const Layout = ({ children }) => {
   const direction = 'ltr'
   const systemMode = getSystemMode()
 
-  return (
-    <Providers direction={direction}>
-      <BlankLayout systemMode={systemMode}>{children}</BlankLayout>
-    </Providers>
-  )
+  return <BlankLayout systemMode={systemMode}>{children}</BlankLayout>
 }
 
 export default Layout

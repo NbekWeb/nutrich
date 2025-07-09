@@ -5,6 +5,7 @@ export const metadata = {
   description: 'des'
 }
 
+import { getServerMode } from '@core/utils/serverHelpers'
 
 export default function Page() {
   return <Home />

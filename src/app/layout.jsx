@@ -9,6 +9,10 @@ import '@assets/iconify-icons/generated-icons.css'
 
 // Component Imports
 import AuthGuard from '@/components/AuthGuard'
+import Providers from '@/components/Providers'
+
+// Util Imports
+import { getSystemMode } from '@core/utils/serverHelpers'
 
 export const metadata = {
   title: 'Nutrich.io',
@@ -18,11 +22,14 @@ export const metadata = {
 const RootLayout = ({ children }) => {
   // Vars
   const direction = 'ltr'
+  const systemMode = getSystemMode()
 
   return (
     <html id='__next' lang='en' dir={direction}>
       <body className='flex is-full min-bs-full flex-auto flex-col'>
-        <AuthGuard>{children}</AuthGuard>
+        <Providers direction={direction}>
+          <AuthGuard>{children}</AuthGuard>
+        </Providers>
       </body>
     </html>
   )

@@ -38,6 +38,7 @@ html {
   display: flex;
   inline-size: 100%;
   min-block-size: 100%;
+  scroll-behavior: smooth;
 }
 
 a {
