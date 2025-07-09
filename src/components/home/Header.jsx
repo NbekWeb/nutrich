@@ -70,6 +70,7 @@ const Header = ({ onModeChange }) => {
     e.preventDefault()
     setIsDrawerOpen(false) // Close drawer when clicking a link
     const element = document.getElementById(targetId)
+    
     if (element) {
       element.scrollIntoView({
         behavior: 'smooth',

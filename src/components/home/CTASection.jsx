@@ -3,9 +3,10 @@ import Button from '@mui/material/Button'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Chip from '@mui/material/Chip'
+
 const CTASection = ({ mode }) => {
   return (
-    <Box id='landingContacts' sx={{ py: 10,      bgcolor: mode === 'dark' ? '#2f3349' : 'grey.50' }}>
+    <Box id='landingContacts' sx={{ py: 10, bgcolor: mode === 'dark' ? '#2f3349' : 'grey.50' }}>
       <Container maxWidth='lg'>
         <Box sx={{ textAlign: 'center' }}>
           <Typography variant='h3' sx={{ fontWeight: 'bold', mb: 3 }}>

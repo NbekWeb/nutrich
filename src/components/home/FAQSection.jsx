@@ -11,8 +11,6 @@ import Chip from '@mui/material/Chip'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 
-
-
 // Styles Imports
 import styles from './styles.module.css'
 
@@ -55,17 +53,16 @@ const FAQSection = ({ mode }) => {
   const skipIntersection = useRef(true)
   const ref = useRef(null)
 
- 
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (skipIntersection.current) {
           skipIntersection.current = false
+
           return
         }
 
-        updateIntersections({ [entry.target.id]: entry.isIntersecting })
+        // updateIntersections({ [entry.target.id]: entry.isIntersecting })
       },
       { threshold: 0.35 }
     )
@@ -79,7 +76,7 @@ const FAQSection = ({ mode }) => {
       id='landingFAQ'
       ref={ref}
       sx={{
-        py: 10,
+        py: 10
       }}
     >
       <Container maxWidth='lg'>
@@ -107,8 +104,7 @@ const FAQSection = ({ mode }) => {
           </div>
           <div>
             <Grid container spacing={6}>
-             
-              <Grid item xs={24} >
+              <Grid item xs={12}>
                 <div>
                   {FaqsData.map((data, index) => {
                     return (
