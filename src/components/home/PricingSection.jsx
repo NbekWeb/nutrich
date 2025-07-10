@@ -3,11 +3,19 @@ import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 import Chip from '@mui/material/Chip'
 
-import PricingPage from '@/components/pricing'
+import PricingPage from './PricingPage'
 
 const PricingSection = ({ mode }) => {
   return (
-    <Box id='landingPricing' sx={{ py: 10 }}>
+    <Box
+      id='landingPricing'
+      sx={{
+        py: 10,
+        bgcolor: 'customColors.chatBg',
+        borderTopLeftRadius: '2rem',
+        borderTopRightRadius: '2rem'
+      }}
+    >
       <Container maxWidth='lg'>
         <Box sx={{ textAlign: 'center', mb: 8 }}>
           <div className='flex flex-col gap-y-4 items-center justify-center'>

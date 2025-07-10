@@ -8,7 +8,6 @@ const MissionSection = ({ mode }) => {
     <Box
       sx={{
         py: 10,
-        bgcolor: mode === 'dark' ? '#2f3349' : 'grey.50'
       }}
     >
       <Container maxWidth='lg'>
@@ -21,7 +20,7 @@ const MissionSection = ({ mode }) => {
               <div className='flex items-center gap-x-2 '>
                 <Typography color='text.primary' variant='h3'>
                   <span className='relative z-[1] font-extrabold'>
-                    Beyond 
+                    Beyond
                     <img
                       src='/images/front-pages/landing-page/bg-shape.png'
                       alt='bg-shape'

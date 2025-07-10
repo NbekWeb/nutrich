@@ -38,8 +38,8 @@ const LandingPage = () => {
       <HeroSection mode={mode} />
       <MissionSection mode={mode} />
       <TargetAudienceSection mode={mode} />
-      <FeaturesSection mode={mode} />
       <ServicesSection mode={mode} />
+      <FeaturesSection mode={mode} />
       <StatisticsSection mode={mode} />
       <PricingSection mode={mode} />
       <TestimonialsSection mode={mode} />

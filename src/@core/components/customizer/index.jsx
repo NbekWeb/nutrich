@@ -270,7 +270,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                       Dark
                     </p>
                   </div>
-                  <div className='flex flex-col items-start gap-0.5'>
+                  {/* <div className='flex flex-col items-start gap-0.5'>
                     <div
                       className={classnames(styles.itemWrapper, styles.modeWrapper, {
                         [styles.active]: settings.mode === 'system'
@@ -282,7 +282,7 @@ const Customizer = ({ breakpoint = 'lg', dir = 'ltr', disableDirection = false }
                     <p className={styles.itemLabel} onClick={() => handleChange('mode', 'system')}>
                       System
                     </p>
-                  </div>
+                  </div> */}
                 </div>
               </div>
               <div className='flex flex-col gap-2'>

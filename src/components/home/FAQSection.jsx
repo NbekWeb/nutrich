@@ -11,7 +11,11 @@ import Chip from '@mui/material/Chip'
 import Box from '@mui/material/Box'
 import Container from '@mui/material/Container'
 
+// Third-party Imports
+import classnames from 'classnames'
+
 // Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
 import styles from './styles.module.css'
 
 const FaqsData = [
@@ -76,7 +80,10 @@ const FAQSection = ({ mode }) => {
       id='landingFAQ'
       ref={ref}
       sx={{
-        py: 10
+        py: 10,
+        bgcolor: 'customColors.chatBg',
+        borderTopRightRadius: '2rem',
+        borderTopLeftRadius: '2rem'
       }}
     >
       <Container maxWidth='lg'>
@@ -104,7 +111,14 @@ const FAQSection = ({ mode }) => {
           </div>
           <div>
             <Grid container spacing={6}>
-              <Grid item xs={12}>
+              <Grid item xs={12} lg={5} className='text-center'>
+                <img
+                  src='/images/faq.png'
+                  alt='boy with laptop'
+                  className='is-[80%] max-is-[320px]'
+                />
+              </Grid>
+              <Grid item xs={12} lg={7}>
                 <div>
                   {FaqsData.map((data, index) => {
                     return (

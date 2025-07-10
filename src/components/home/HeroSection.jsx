@@ -1,9 +1,72 @@
+// React Imports
+import { useState, useEffect, useRef } from 'react'
+
+// Next Imports
+import Link from 'next/link'
+
+// MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
+import { useColorScheme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
-const HeroSection = ({ mode }) => {
+// Third-party Imports
+import classnames from 'classnames'
+
+// Hook Imports
+import { useImageVariant } from '@core/hooks/useImageVariant'
+
+// Styles Imports
+import styles from './styles.module.css'
+import frontCommonStyles from '@views/front-pages/styles.module.css'
+
+const HeroSection = () => {
+  const [mode, setMode] = useState('light') // default light
+  const [transform, setTransform] = useState('')
+
+  const { mode: muiMode, setMode: setMuiMode } = useColorScheme()
+
+  useEffect(() => {
+    if (muiMode && muiMode !== mode) {
+      setMode(muiMode)
+    }
+  }, [muiMode, mode])
+
+  const sectionBg =
+    mode === 'dark'
+      ? 'radial-gradient(ellipse at 50% 0%, #3a3456 0%, #23243c 100%)'
+      : 'radial-gradient(ellipse at 50% 0%, #f3eaff 0%, #f8fafc 100%)'
+
+  // Vars
+  const dashboardImageLight = '/images/front-pages/hero-dashboard.jpeg'
+  const dashboardImageDark = '/images/front-pages/hero-dashboard.jpeg'
+  const heroSectionBgLight = '/images/front-pages/hero-bg-light.png'
+  const heroSectionBgDark = '/images/front-pages/hero-bg-dark.png'
+
+  // Hooks
+  const dashboardImage = useImageVariant(muiMode, dashboardImageLight, dashboardImageDark)
+  const heroSectionBg = useImageVariant(muiMode, heroSectionBgLight, heroSectionBgDark)
+  const isAboveLgScreen = useMediaQuery(theme => theme.breakpoints.up('lg'))
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const handleMouseMove = event => {
+        const rotateX = (window.innerHeight - 2 * event.clientY) / 100
+        const rotateY = (window.innerWidth - 2 * event.clientX) / 100
+
+        setTransform(
+          `perspective(1200px) rotateX(${rotateX < -40 ? -20 : rotateX}deg) rotateY(${rotateY}deg) scale3d(1,1,1)`
+        )
+      }
+
+      window.addEventListener('mousemove', handleMouseMove)
+
+      return () => {
+        window.removeEventListener('mousemove', handleMouseMove)
+      }
+    }
+  }, [])
+
   const gradientTextStyle = {
     background: 'linear-gradient(to right, #007CF0, #00DFD8)',
     WebkitBackgroundClip: 'text',
@@ -11,70 +74,94 @@ const HeroSection = ({ mode }) => {
     backgroundClip: 'text'
   }
 
+  const imgRef = useRef(null)
+
+  useEffect(() => {
+    if (imgRef.current) {
+      imgRef.current.style.transform = 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1,1,1)'
+      imgRef.current.style.transition = 'transform 0.4s cubic-bezier(.47,1.64,.41,.8)'
+    }
+  }, [])
+
   return (
-    <Box
-      sx={{
-        py: { xs: 10, md: 16 },
-        textAlign: 'center',
+    <section
+      id='home'
+      className='overflow-hidden relative  pb-[50px]  '
+      style={{
+        position: 'relative',
+        zIndex: 1,
+        marginTop: '-80px',
+        bgcolor: 'customColors.chatBg'
       }}
     >
-      <Container maxWidth='lg' >
-        <Typography
-          variant='h2'
-          component='h1'
-          sx={{
-            fontSize: { xs: '2.5rem', md: '4rem' },
-            fontWeight: 900,
-            mb: 3,
-            lineHeight: 1.2
+      {/* Hero section (gradient, radius) */}
+      <div
+        className='relative rounded-b-[2rem] overflow-hidden'
+        style={{
+          paddingBottom: '200px'
+        }}
+      >
+        <img
+          src={heroSectionBg}
+          alt='hero-bg'
+          className={classnames('w-full h-full absolute inset-0 max-sm:!max-h-[85%]  ', styles.heroSectionBg)}
+          style={{
+            objectFit: 'cover',
+            zIndex: 0,
+            pointerEvents: 'none',
+            background: sectionBg
           }}
-        >
-          <span style={gradientTextStyle}>NUTRICH.IO</span>
-          <br />
-          What to Eat? Now You Know.
-        </Typography>
-        <Typography
-          variant='h6'
-          sx={{
-            color: 'text.secondary',
-            maxWidth: '800px',
-            mx: 'auto',
-            mb: 5
+        />
+        <div className='relative z-10 max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 pt-[120px] pb-[40px] text-center'>
+          <div className='md:max-is-[550px] mbs-0 mbe-7 mli-auto text-center relative'>
+            <Typography
+              className={classnames('font-extrabold sm:text-[42px] text-3xl mbe-4 leading-[48px]', styles.heroText)}
+            >
+              <span style={gradientTextStyle}>NUTRICH.IO</span>
+              <br />
+              What to Eat? Now You Know.
+            </Typography>
+            <Typography className='font-medium' color='text.primary'>
+              Stop guessing and start glowing. Get unique meal plans generated by artificial intelligence, perfectly
+              tailored to your individual data, goals, and preferences. Transform your health with your own daily
+              nutrition assistant.
+            </Typography>
+            <div className='flex mbs-6 items-center justify-center gap-3 '>
+              <Typography className='font-medium max-sm:hidden'>Join community</Typography>
+              <img
+                src='/images/front-pages/landing-page/join-community-arrow.png'
+                alt='arrow'
+                height='48'
+                width='60'
+                className='max-sm:hidden'
+                style={{ marginBottom: '-12px' }}
+              />
+              <Button component={Link} size='large' href='/register' variant='contained' color='primary'>
+                Create My Personal Plan
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        className='relativie z-20 max-w-[900px] mx-auto -mt-[200px] max-lg:max-w-[700px] max-md:max-w-[500px] max-sm:max-w-full max-sm:px-16'
+        style={{
+          transform: isAboveLgScreen ? transform : 'none'
+        }}
+      >
+        <img
+          ref={imgRef}
+          src={dashboardImage}
+          alt='dashboard-image'
+          className='rounded-2xl max-sm:rounded-lg'
+          style={{
+            width: '100%',
+            boxShadow: '0 8px 32px 0 rgba(40, 40, 80, 0.18)',
+            padding: 0
           }}
-        >
-          Stop guessing and start glowing. Get unique meal plans generated by artificial intelligence, perfectly
-          tailored to your individual data, goals, and preferences. Transform your health with your own daily nutrition
-          assistant.
-        </Typography>
-        <Box sx={{ display: 'flex', gap: 2, justifyContent: 'center', flexWrap: 'wrap' }}>
-          <Button
-            variant='contained'
-            size='large'
-            sx={{
-              background: 'linear-gradient(to right, #007CF0, #00DFD8)',
-              px: 4,
-              py: 1.5,
-              fontSize: '1.1rem',
-              fontWeight: 'bold'
-            }}
-          >
-            Create My Personal Plan
-          </Button>
-          <Button
-            variant='outlined'
-            size='large'
-            sx={{
-              px: 4,
-              py: 1.5,
-              fontSize: '1.1rem',
-              fontWeight: 'bold'
-            }}
-          >
-            Check Other Options
-          </Button>
-        </Box>
-      </Container>
-    </Box>
+        />
+      </div>
+    </section>
   )
 }
 

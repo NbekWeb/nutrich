@@ -143,7 +143,7 @@ const colorSchemes = skin => {
         },
         customColors: {
           bodyBg: '#F8F7FA',
-          chatBg: '#F3F2F5',
+          chatBg: '#FFFFFF', // O'zgartiring - hozir oq rang
           greyLightBg: '#FAFAFA',
           inputBorder: `rgb(var(--mui-mainColorChannels-light) / 0.22)`,
           tableHeaderBg: '#FFFFFF',

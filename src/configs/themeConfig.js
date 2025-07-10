@@ -16,8 +16,8 @@
  * Another way is to clear the cookie from the browser's Application/Storage tab and then reload the page.
  */
 const themeConfig = {
-  templateName: 'Nutrich.io',
-  homePageUrl: '/user',
+  templateName: 'Vuexy',
+  homePageUrl: '/dashboards/crm',
   settingsCookieName: 'vuexy-mui-next-demo-1',
   mode: 'system', // 'system', 'light', 'dark'
   skin: 'default', // 'default', 'bordered'
@@ -33,7 +33,13 @@ const themeConfig = {
     blur: true // true, false
   },
   contentWidth: 'compact', // 'compact', 'wide'
-  disableRipple: false // true, false
+  footer: {
+    type: 'static', // 'fixed', 'static'
+    contentWidth: 'compact', // 'compact', 'wide'
+    detached: true //! true, false (This will not work in the Horizontal Layout)
+  },
+  disableRipple: false, // true, false
+  toastPosition: 'top-right' // 'top-right', 'top-center', 'top-left', 'bottom-right', 'bottom-center', 'bottom-left'
 }
 
 export default themeConfig

@@ -25,7 +25,6 @@ const NavbarContent = () => {
     >
       <div className='flex items-center gap-4'>
         <NavToggle />
-        {/* Hide Logo on Smaller screens */}
         {!isBreakpointReached && <Logo />}
       </div>
       <div className='flex items-center'>

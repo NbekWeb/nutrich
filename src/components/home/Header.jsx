@@ -70,7 +70,7 @@ const Header = ({ onModeChange }) => {
     e.preventDefault()
     setIsDrawerOpen(false) // Close drawer when clicking a link
     const element = document.getElementById(targetId)
-    
+
     if (element) {
       element.scrollIntoView({
         behavior: 'smooth',
@@ -126,14 +126,14 @@ const Header = ({ onModeChange }) => {
               </div>
             ) : (
               <div className='flex items-center justify-between w-full'>
-                {/* Logo va nom */}
+               
                 <div className='flex items-center gap-2 mr-8'>
                   <Link href='/' className='flex items-center gap-2'>
                     <Logo />
                   </Link>
                 </div>
                 {/* Navigatsiya menyusi */}
-                <nav className='flex items-center gap-6'>
+                <nav className='flex items-center gap-6 '>
                   <a
                     href='#landingHero'
                     className={classnames(
@@ -183,7 +183,7 @@ const Header = ({ onModeChange }) => {
                   >
                     FAQ
                   </a>
-                  <a
+                  {/* <a
                     href='#landingContacts'
                     onClick={e => handleSmoothScroll(e, 'landingContacts')}
                     className={classnames(
@@ -192,7 +192,7 @@ const Header = ({ onModeChange }) => {
                     )}
                   >
                     Contact us
-                  </a>
+                  </a> */}
                 </nav>
                 {/* O'ng tomon */}
                 <div className='flex items-center gap-4'>
@@ -222,7 +222,7 @@ const Header = ({ onModeChange }) => {
         PaperProps={{
           sx: {
             width: 280,
-            backgroundColor: mode === 'dark' ? 'var(--bs-body-bg)' : 'white',
+            bgcolor: 'var(--mui-palette-background-default)',
             borderRight: mode === 'dark' ? '1px solid var(--mui-palette-divider)' : '1px solid #e0e0e0'
           }
         }}

@@ -1,38 +1,79 @@
+// React Imports
+import { useEffect, useState } from 'react'
+
+// Next Imports
+import Link from 'next/link'
+
+// MUI Imports
 import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
-import Chip from '@mui/material/Chip'
+import { useColorScheme } from '@mui/material/styles'
 
-const CTASection = ({ mode }) => {
+// Third-party Imports
+import classnames from 'classnames'
+
+// Hooks Imports
+import { useImageVariant } from '@core/hooks/useImageVariant'
+
+// Styles Imports
+import frontCommonStyles from '@views/front-pages/styles.module.css'
+
+const GetStarted = () => {
+  // MUI theme mode
+  const { mode: muiMode } = useColorScheme()
+  const mode = muiMode || 'light' // fallback light
+
+  // Vars
+  const getStartedImageLight = '/images/front-pages/landing-page/get-started-bg-light.png'
+  const getStartedImageDark = '/images/front-pages/landing-page/get-started-bg-dark.png'
+
+  // HOOKNI TO'G'RIDAN-TO'G'RI CHAQIRING!
+  const getStartedImage = useImageVariant(mode, getStartedImageLight, getStartedImageDark) || getStartedImageLight
+
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   return (
-    <Box id='landingContacts' sx={{ py: 10, bgcolor: mode === 'dark' ? '#2f3349' : 'grey.50' }}>
-      <Container maxWidth='lg'>
-        <Box sx={{ textAlign: 'center' }}>
-          <Typography variant='h3' sx={{ fontWeight: 'bold', mb: 3 }}>
-            Ready to Transform Your Nutrition?
-          </Typography>
-          <Typography variant='body1' sx={{ color: 'text.secondary', maxWidth: '600px', mx: 'auto', mb: 4 }}>
-            Stop wondering, start knowing. Your personal AI nutrition assistant is waiting. Create your free account
-            today and discover how easy healthy eating can be.
-          </Typography>
-          <Button
-            variant='contained'
-            size='large'
-            sx={{
-              background: 'linear-gradient(to right, #007CF0, #00DFD8)',
-              px: 4,
-              py: 1.5,
-              fontSize: '1.1rem',
-              fontWeight: 'bold'
-            }}
-          >
-            Register for Free with Google
+    <section className='relative'>
+      {mounted && (
+        <img
+          src={getStartedImage}
+          alt='background-image'
+          className='absolute is-full flex -z-1 pointer-events-none bs-full block-end-0'
+        />
+      )}
+      <div
+        className={classnames(
+          'flex items-center flex-wrap justify-center lg:justify-between gap-y-4 gap-x-28',
+          frontCommonStyles.layoutSpacing
+        )}
+      >
+        <div className='flex flex-col items-start gap-y-8 pbs-9 lg:plb-9 z-[1]'>
+          <div className='flex flex-col'>
+            <Typography variant='h3' color='primary' className='font-bold text-[2.125rem]'>
+              Ready to Get Started?
+            </Typography>
+            <Typography variant='h5' color='text.secondary'>
+              Start your project with a 14-day free trial
+            </Typography>
+          </div>
+          <Button component={Link} href='/front-pages/payment' variant='contained'>
+            Get Started
           </Button>
-        </Box>
-      </Container>
-    </Box>
+        </div>
+        <div className='flex pbs-4 lg:pbs-[60px] md:pie-4 z-[1]'>
+          <img
+            src='/images/front-pages/hero-dashboard.jpeg'
+            alt='dashboard-image'
+            className='max-is-[600px] is-full rounded-bs'
+          />
+        </div>
+      </div>
+    </section>
   )
 }
 
-export default CTASection
+export default GetStarted

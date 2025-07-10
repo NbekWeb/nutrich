@@ -99,14 +99,14 @@ const ModeDropdown = () => {
                     <i className='tabler-moon-stars' />
                     Dark
                   </MenuItem>
-                  <MenuItem
+                  {/* <MenuItem
                     className='gap-3'
                     onClick={() => handleModeSwitch('system')}
                     selected={settings.mode === 'system'}
                   >
                     <i className='tabler-device-laptop' />
                     System
-                  </MenuItem>
+                  </MenuItem> */}
                 </MenuList>
               </ClickAwayListener>
             </Paper>
