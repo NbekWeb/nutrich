@@ -3,10 +3,10 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 
 // SVG Imports
-import Check from '@assets/svg/front-pages/landing-page/Check'
-import User from '@assets/svg/front-pages/landing-page/User'
-import LaptopCharging from '@assets/svg/front-pages/landing-page/LaptopCharging'
-import Diamond from '@assets/svg/front-pages/landing-page/Diamond'
+import Check from '@assets/svg/Check'
+import User from '@assets/svg/User'
+import LaptopCharging from '@assets/svg/LaptopCharging'
+import Diamond from '@assets/svg/Diamond'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'

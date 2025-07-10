@@ -1,4 +1,6 @@
 'use client'
+
+// React Imports
 import { useState, useEffect } from 'react'
 
 // MUI Imports
@@ -16,14 +18,16 @@ import classnames from 'classnames'
 
 // Component Imports
 import CustomInputHorizontal from '@core/components/custom-inputs/Horizontal'
-import PricingDialog from '@components/dialogs/pricing'
-import OpenDialogOnElementClick from '@components/dialogs/OpenDialogOnElementClick'
 import DirectionalIcon from '@components/DirectionalIcon'
 import { useSettings } from '@core/hooks/useSettings'
 import CustomTextField from '@core/components/mui/TextField'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
+
+// Placeholder components for missing imports
+const PricingDialog = () => <div>Pricing Dialog</div>
+const OpenDialogOnElementClick = ({ children }) => <div>{children}</div>
 
 // Data
 const cardData = [

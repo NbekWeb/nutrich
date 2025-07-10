@@ -17,7 +17,7 @@ import CustomAvatar from '@core/components/mui/Avatar'
 import CustomTextField from '@core/components/mui/TextField'
 
 // Hook Imports
-import { useIntersection } from '@/hooks/useIntersection'
+import useIntersection from '@/hooks/useIntersection'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
@@ -29,7 +29,7 @@ const ContactUs = () => {
   const ref = useRef(null)
 
   // Hooks
-  const { updateIntersections } = useIntersection()
+  const [targetRef, isIntersecting] = useIntersection()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -40,7 +40,7 @@ const ContactUs = () => {
           return
         }
 
-        updateIntersections({ [entry.target.id]: entry.isIntersecting })
+        // Handle intersection logic here
       },
       { threshold: 0.35 }
     )

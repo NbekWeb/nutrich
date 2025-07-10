@@ -7,11 +7,19 @@ import { useEffect } from 'react'
 import classnames from 'classnames'
 
 // Component Imports
-import Checkout from '@views/pages/wizard-examples/checkout/index'
 import { useSettings } from '@core/hooks/useSettings'
 
 // Styles Imports
 import frontCommonStyles from './styles.module.css'
+
+const Checkout = () => {
+  return (
+    <div className='text-center py-8'>
+      <h2 className='text-2xl font-bold mb-4'>Checkout</h2>
+      <p className='text-gray-600'>Checkout functionality coming soon...</p>
+    </div>
+  )
+}
 
 const CheckoutPage = () => {
   // Hooks

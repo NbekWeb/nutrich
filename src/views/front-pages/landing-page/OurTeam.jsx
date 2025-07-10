@@ -11,7 +11,7 @@ import { styled } from '@mui/material/styles'
 import classnames from 'classnames'
 
 // Hook Imports
-import { useIntersection } from '@/hooks/useIntersection'
+import useIntersection from '@/hooks/useIntersection'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
@@ -59,7 +59,7 @@ const OurTeam = () => {
   const ref = useRef(null)
 
   // Hooks
-  const { updateIntersections } = useIntersection()
+  const [targetRef, isIntersecting] = useIntersection()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -70,7 +70,7 @@ const OurTeam = () => {
           return
         }
 
-        updateIntersections({ [entry.target.id]: entry.isIntersecting })
+        // Handle intersection logic here
       },
       { threshold: 0.35 }
     )

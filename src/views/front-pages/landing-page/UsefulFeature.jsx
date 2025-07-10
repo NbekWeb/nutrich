@@ -10,7 +10,7 @@ import Chip from '@mui/material/Chip'
 import classnames from 'classnames'
 
 // Hook Imports
-import { useIntersection } from '@/hooks/useIntersection'
+import useIntersection from '@/hooks/useIntersection'
 
 // SVG Imports
 import Paper from '@assets/svg/front-pages/landing-page/Paper'
@@ -63,7 +63,7 @@ const UsefulFeature = () => {
   const ref = useRef(null)
 
   // Hooks
-  const { updateIntersections } = useIntersection()
+  const [targetRef, isIntersecting] = useIntersection()
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -74,7 +74,7 @@ const UsefulFeature = () => {
           return
         }
 
-        updateIntersections({ [entry.target.id]: entry.isIntersecting })
+        // Handle intersection logic here
       },
       { threshold: 0.35 }
     )

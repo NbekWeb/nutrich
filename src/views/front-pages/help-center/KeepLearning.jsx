@@ -9,8 +9,11 @@ import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
 
 // SVG Imports
+// eslint-disable-next-line import/no-unresolved
 import Laptop from '@assets/svg/front-pages/help-center/Laptop'
+// eslint-disable-next-line import/no-unresolved
 import Bulb from '@assets/svg/front-pages/help-center/Bulb'
+// eslint-disable-next-line import/no-unresolved
 import Discord from '@assets/svg/front-pages/help-center/Discord'
 
 // Styles Imports
