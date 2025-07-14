@@ -10,7 +10,7 @@ import Chip from '@mui/material/Chip'
 import classnames from 'classnames'
 
 // Hook Imports
-import useIntersection from '@/hooks/useIntersection'
+import { useIntersection } from '@/hooks/useIntersection'
 
 // SVG Imports
 import Paper from '@assets/svg/front-pages/landing-page/Paper'

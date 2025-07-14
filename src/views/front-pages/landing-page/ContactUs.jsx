@@ -17,7 +17,7 @@ import CustomAvatar from '@core/components/mui/Avatar'
 import CustomTextField from '@core/components/mui/TextField'
 
 // Hook Imports
-import useIntersection from '@/hooks/useIntersection'
+import { useIntersection } from '@/hooks/useIntersection'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'

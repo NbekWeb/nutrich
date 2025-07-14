@@ -13,7 +13,7 @@ import Chip from '@mui/material/Chip'
 import classnames from 'classnames'
 
 // Hook Imports
-import useIntersection from '@/hooks/useIntersection'
+import { useIntersection } from '@/hooks/useIntersection'
 
 // Styles Imports
 import frontCommonStyles from '@views/front-pages/styles.module.css'
