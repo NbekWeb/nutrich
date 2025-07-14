@@ -1,35 +1,16 @@
-import { useEffect, useRef, useState } from 'react'
+// React Imports
+import { useContext } from 'react'
 
-const useIntersection = (options = {}) => {
-  const [isIntersecting, setIsIntersecting] = useState(false)
-  const [hasIntersected, setHasIntersected] = useState(false)
-  const targetRef = useRef(null)
+// Context Imports
+import { IntersectionContext } from '@/contexts/intersectionContext'
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
-      const isElementIntersecting = entry.isIntersecting
+export const useIntersection = () => {
+  // Hooks
+  const context = useContext(IntersectionContext)
 
-      setIsIntersecting(isElementIntersecting)
+  if (!context) {
+    throw new Error('useIntersection must be used within a IntersectionProvider')
+  }
 
-      if (isElementIntersecting && !hasIntersected) {
-        setHasIntersected(true)
-      }
-    }, options)
-
-    const currentTarget = targetRef.current
-
-    if (currentTarget) {
-      observer.observe(currentTarget)
-    }
-
-    return () => {
-      if (currentTarget) {
-        observer.unobserve(currentTarget)
-      }
-    }
-  }, [options, hasIntersected])
-
-  return [targetRef, isIntersecting, hasIntersected]
+  return context
 }
-
-export default useIntersection

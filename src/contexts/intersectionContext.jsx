@@ -5,8 +5,11 @@ import { createContext, useState } from 'react'
 
 export const initialIntersections = {
   features: false,
-  team: false,
+  services: false,
+  pricing: false,
   faq: false,
+  contacts: false,
+  team: false,
   'contact-us': false
 }
 export const IntersectionContext = createContext(null)
