@@ -1,9 +1,13 @@
 .gradient-btn {
-  background: linear-gradient(90deg, #1976d2 0%, #26c6da 100%);
+  background: #1976d2;
   color: #fff !important;
-  box-shadow: 0 4px 24px 0 rgba(76, 110, 245, 0.12);
+  box-shadow: 0 4px 24px 0 rgba(25, 118, 210, 0.12);
   border: none;
   min-height: 50px;
+  transition: background 0.2s;
+}
+.gradient-btn:hover {
+  background: #1565c0;
 }
 
 .gray-btn {

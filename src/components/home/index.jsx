@@ -11,11 +11,11 @@ import {
   FeaturesSection,
   ServicesSection,
   StatisticsSection,
-  PricingSection,
   TestimonialsSection,
   FAQSection,
   CTASection
 } from './components'
+import Pricing from '@/components/pricing'
 
 export const metadata = {
   title: 'Nutrich.io - What to Eat, Now You Know',
@@ -41,7 +41,7 @@ const LandingPage = () => {
       <ServicesSection mode={mode} />
       <FeaturesSection mode={mode} />
       <StatisticsSection mode={mode} />
-      <PricingSection mode={mode} />
+      <Pricing mode={mode} />
       <TestimonialsSection mode={mode} />
       <FAQSection mode={mode} />
       <CTASection mode={mode} />

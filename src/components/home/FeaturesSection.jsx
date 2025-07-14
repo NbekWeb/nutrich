@@ -25,37 +25,103 @@ import frontCommonStyles from '@views/front-pages/styles.module.css'
 // Data
 const features = [
   {
-    icon: <AccountBalanceWalletIcon sx={{ fontSize: 40, color: 'var(--mui-palette-primary-main)' }} />,
+    icon: (
+      <AccountBalanceWalletIcon
+        sx={{
+          fontSize: 64,
+          color: 'var(--mui-palette-primary-main)',
+          fill: 'color-mix(in srgb, var(--mui-palette-primary-main) 20%, transparent)',
+          stroke: 'currentColor',
+          strokeWidth: 1.2,
+          opacity: 0.7
+        }}
+      />
+    ), // outlined style
     title: 'Your Flexible Health Wallet',
     description:
       'Purchase tokens with ease and use them for any service you want, whenever you want. Your balance never expires.'
   },
   {
-    icon: <FolderIcon sx={{ fontSize: 40, color: 'var(--mui-palette-primary-main)' }} />,
+    icon: (
+      <FolderIcon
+        sx={{
+          fontSize: 64,
+          color: 'var(--mui-palette-primary-main)',
+          fill: 'color-mix(in srgb, var(--mui-palette-primary-main) 20%, transparent)',
+          stroke: 'currentColor',
+          strokeWidth: 1.2,
+          opacity: 0.7
+        }}
+      />
+    ), // outlined style
     title: 'Your Personal Result Center',
     description:
       'All purchased meal plans and recipes are automatically saved and always available in your personal account.'
   },
   {
-    icon: <PsychologyIcon sx={{ fontSize: 40, color: 'var(--mui-palette-primary-main)' }} />,
+    icon: (
+      <PsychologyIcon
+        sx={{
+          fontSize: 64,
+          color: 'var(--mui-palette-primary-main)',
+          fill: 'color-mix(in srgb, var(--mui-palette-primary-main) 20%, transparent)',
+          stroke: 'currentColor',
+          strokeWidth: 1.2,
+          opacity: 0.7
+        }}
+      />
+    ), // outlined style
     title: 'Intelligent Personalization',
     description:
       'Our AI analyzes your unique data—height, weight, age, and goals—to calculate your optimal daily calorie intake with precision.'
   },
   {
-    icon: <FamilyRestroomIcon sx={{ fontSize: 40, color: 'var(--mui-palette-primary-main)' }} />,
+    icon: (
+      <FamilyRestroomIcon
+        sx={{
+          fontSize: 64,
+          color: 'var(--mui-palette-primary-main)',
+          fill: 'color-mix(in srgb, var(--mui-palette-primary-main) 20%, transparent)',
+          stroke: 'currentColor',
+          strokeWidth: 1.2,
+          opacity: 0.7
+        }}
+      />
+    ), // outlined style
     title: 'Family & Couples Plans',
     description:
       'Generate a shared meal plan for two or more people with different goals, with smart portion sizes for each person.'
   },
   {
-    icon: <RestaurantIcon sx={{ fontSize: 40, color: 'var(--mui-palette-primary-main)' }} />,
+    icon: (
+      <RestaurantIcon
+        sx={{
+          fontSize: 64,
+          color: 'var(--mui-palette-primary-main)',
+          fill: 'color-mix(in srgb, var(--mui-palette-primary-main) 20%, transparent)',
+          stroke: 'currentColor',
+          strokeWidth: 1.2,
+          opacity: 0.7
+        }}
+      />
+    ), // outlined style
     title: 'Healthy Alternatives',
     description:
       'Craving something unhealthy? Our AI assistant helps you stay on track by offering a healthy and delicious alternative.'
   },
   {
-    icon: <AutoFixHighIcon sx={{ fontSize: 40, color: 'var(--mui-palette-primary-main)' }} />,
+    icon: (
+      <AutoFixHighIcon
+        sx={{
+          fontSize: 64,
+          color: 'var(--mui-palette-primary-main)',
+          fill: 'color-mix(in srgb, var(--mui-palette-primary-main) 20%, transparent)',
+          stroke: 'currentColor',
+          strokeWidth: 1.2,
+          opacity: 0.7
+        }}
+      />
+    ), // outlined style
     title: 'AI Plan Adaptation',
     description:
       'Missing an ingredient? The AI can change a recipe on the fly while maintaining the required nutritional balance.'

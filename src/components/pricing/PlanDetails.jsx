@@ -61,14 +61,16 @@ const PlanDetails = ({ data, popular = false }) => {
             {data?.token_value}
           </Typography>
           <Typography component='sub' className='self-end font-medium'>
-            token
+            /token
           </Typography>
         </div>
+        <p className='text-start mt-5 '>{data?.description}</p>
       </div>
       <div style={{ flex: 1 }} />
       <Button
         fullWidth
-        className={!popular ? styles['gray-btn'] : styles['gradient-btn']}
+        color={data?.currentPlan ? 'success' : 'primary'}
+        variant={data?.popularPlan ? 'contained' : 'tonal'}
         onClick={() => buyToken(data?.id)}
       >
         Purchase ${parseFloat(data?.price).toFixed(2).replace(/\.00$/, '')}

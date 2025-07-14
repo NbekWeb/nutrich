@@ -46,7 +46,7 @@ const PlanDetails = ({ data, pricingPlan }) => {
       </div>
       <div className='text-center flex flex-col gap-1'>
         <Typography variant='h4'>{data?.title}</Typography>
-        <Typography>{data?.subtitle}</Typography>
+        <Typography>{data?.description}</Typography>
       </div>
       <div className='relative mbe-4'>
         <div className='flex justify-center'>

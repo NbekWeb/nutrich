@@ -65,11 +65,7 @@ const GetStarted = () => {
           </Button>
         </div>
         <div className='flex pbs-4 lg:pbs-[60px] md:pie-4 z-[1]'>
-          <img
-            src='/images/front-pages/hero-dashboard.jpeg'
-            alt='dashboard-image'
-            className='max-is-[600px] is-full rounded-bs'
-          />
+          <img src='/images/support.png' alt='dashboard-image' className='max-is-[600px] is-full rounded-bs' />
         </div>
       </div>
     </section>

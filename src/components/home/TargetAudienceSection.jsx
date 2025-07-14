@@ -23,25 +23,69 @@ import frontCommonStyles from '@views/front-pages/styles.module.css'
 // Data
 const targetAudience = [
   {
-    icon: <WorkIcon sx={{ fontSize: 40, color: 'var(--mui-palette-primary-main)' }} />,
+    icon: (
+      <WorkIcon
+        sx={{
+          fontSize: 64,
+          color: 'var(--mui-palette-primary-main)',
+          fill: 'color-mix(in srgb, var(--mui-palette-primary-main) 20%, transparent)',
+          stroke: 'currentColor',
+          strokeWidth: 1.2,
+          opacity: 0.7
+        }}
+      />
+    ), // outlined style
     title: 'For Busy Professionals',
     description:
       'Save time and mental energy. Get your weekly meals planned out so you can focus on your work, knowing your nutrition is optimized for performance.'
   },
   {
-    icon: <FamilyRestroomIcon sx={{ fontSize: 40, color: 'var(--mui-palette-primary-main)' }} />,
+    icon: (
+      <FamilyRestroomIcon
+        sx={{
+          fontSize: 64,
+          color: 'var(--mui-palette-primary-main)',
+          fill: 'color-mix(in srgb, var(--mui-palette-primary-main) 20%, transparent)',
+          stroke: 'currentColor',
+          strokeWidth: 1.2,
+          opacity: 0.7
+        }}
+      />
+    ), // outlined style
     title: 'For Families & Couples',
     description:
       'Finally solve the "what to cook for everyone" problem. Our Family Plan service generates shared meals with clever recipe changes for everyone.'
   },
   {
-    icon: <FitnessCenterIcon sx={{ fontSize: 40, color: 'var(--mui-palette-primary-main)' }} />,
+    icon: (
+      <FitnessCenterIcon
+        sx={{
+          fontSize: 64,
+          color: 'var(--mui-palette-primary-main)',
+          fill: 'color-mix(in srgb, var(--mui-palette-primary-main) 20%, transparent)',
+          stroke: 'currentColor',
+          strokeWidth: 1.2,
+          opacity: 0.7
+        }}
+      />
+    ), // outlined style
     title: 'For Fitness Enthusiasts',
     description:
       'Dial in your nutrition with precision. Our system accurately calculates macros to help you reach your specific fitness goals.'
   },
   {
-    icon: <HealthAndSafetyIcon sx={{ fontSize: 40, color: 'var(--mui-palette-primary-main)' }} />,
+    icon: (
+      <HealthAndSafetyIcon
+        sx={{
+          fontSize: 64,
+          color: 'var(--mui-palette-primary-main)',
+          fill: 'color-mix(in srgb, var(--mui-palette-primary-main) 20%, transparent)',
+          stroke: 'currentColor',
+          strokeWidth: 1.2,
+          opacity: 0.7
+        }}
+      />
+    ), // outlined style
     title: 'For a Healthier Lifestyle',
     description:
       'Get started easily. Simply provide your data and preferences, and let our AI guide you. All plans are saved in your personal account.'

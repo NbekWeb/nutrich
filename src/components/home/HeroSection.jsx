@@ -117,8 +117,8 @@ const HeroSection = () => {
             <Typography
               className={classnames('font-extrabold sm:text-[42px] text-3xl mbe-4 leading-[48px]', styles.heroText)}
             >
-              <span style={gradientTextStyle}>NUTRICH.IO</span>
-              <br />
+              {/* <span style={gradientTextStyle}>NUTRICH.IO</span> */}
+              {/* <br /> */}
               What to Eat? Now You Know.
             </Typography>
             <Typography className='font-medium' color='text.primary'>

@@ -26,45 +26,45 @@ import styles from './styles.module.css'
 const testimonials = [
   {
     text: "The Family Plan is a lifesaver. My husband is trying to lose weight, I'm a vegetarian, and our son just wants tasty food. Nutrich.io creates one menu for all of us. It's brilliant!",
-    author: 'Anna K.',
+    author: 'Mark T.',
     role: 'Mom & Busy Professional',
     rating: 5,
-    avatarSrc: '/images/avatars/1.png'
+    avatarSrc: '/images/avatars/rev1.png'
   },
   {
     text: "I'm down 4 kg in my first month, and I never felt like I was on a diet. The 'What if...' AI assistant is the best part. This is the first plan I've actually been able to stick to.",
-    author: 'Mark T.',
+    author: 'Anna K.',
     role: 'User since June 2025',
     rating: 5,
-    avatarSrc: '/images/avatars/2.png'
+    avatarSrc: '/images/avatars/rev2.png'
   },
   {
     text: 'I bought the "2 Week Marathon Meal Plan" and the results were incredible. All my plans are saved in my personal account, so I can go back to my favorite meals anytime. Highly recommended!',
-    author: 'Elena P.',
+    author: 'John P.',
     role: 'Fitness Enthusiast',
     rating: 5,
-    avatarSrc: '/images/avatars/3.png'
+    avatarSrc: '/images/avatars/rev3.png'
   },
   {
     text: "The AI meal planning feature is incredible. It understands my dietary restrictions and creates delicious, healthy meals. I've never felt better!",
     author: 'Sarah M.',
     role: 'Health Coach',
     rating: 4,
-    avatarSrc: '/images/avatars/4.png'
+    avatarSrc: '/images/avatars/rev4.png'
   },
   {
     text: "As a busy professional, I don't have time to plan meals. Nutrich.io does it all for me. The grocery lists are a game-changer!",
     author: 'David L.',
     role: 'Software Engineer',
     rating: 5,
-    avatarSrc: '/images/avatars/5.png'
+    avatarSrc: '/images/avatars/rev1.png'
   },
   {
     text: 'The family meal planning feature is exactly what we needed. Everyone gets their preferences met, and dinner time is no longer a battle!',
     author: 'Maria R.',
     role: 'Working Mother',
     rating: 5,
-    avatarSrc: '/images/avatars/6.png'
+    avatarSrc: '/images/avatars/rev2.png'
   }
 ]
 
@@ -176,7 +176,7 @@ const TestimonialsSection = ({ mode }) => {
                         <Typography variant='body2' sx={{ color: 'text.secondary', mb: 2 }}>
                           &ldquo;{testimonial.text}&rdquo;
                         </Typography>
-                        {/* <Rating value={testimonial.rating} readOnly /> */}
+                        <Rating value={testimonial.rating} readOnly />
                         <div className='flex items-center gap-x-3'>
                           <CustomAvatar size={32} src={testimonial.avatarSrc} alt={testimonial.author} />
                           <div className='flex flex-col items-start'>
