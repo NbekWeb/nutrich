@@ -1,5 +1,6 @@
 // Next Imports
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
@@ -21,6 +22,18 @@ const GetStarted = ({ mode }) => {
 
   // Hooks
   const getStartedImage = useImageVariant(mode, getStartedImageLight, getStartedImageDark)
+
+  const router = useRouter()
+
+  function goStart() {
+    const accessToken = localStorage.getItem('access_token')
+
+    if (!accessToken) {
+      router.push('/login')
+
+      return
+    }
+  }
 
   return (
     <section className='relative'>
@@ -44,7 +57,7 @@ const GetStarted = ({ mode }) => {
               Start your project with a 14-day free trial
             </Typography>
           </div>
-          <Button component={Link} href='/front-pages/payment' variant='contained'>
+          <Button onClick={goStart} variant='contained'>
             Get Started
           </Button>
         </div>

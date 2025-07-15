@@ -17,20 +17,20 @@ const PlanDetails = ({ data, popular = false }) => {
   const router = useRouter()
 
   function buyToken(id) {
-    buyTokePrice({ token: id }, () => {
-      getUser(() => {
-        router.push('/user')
-      })
-    })
+    const accessToken = localStorage.getItem('access_token')
+
+    if (!accessToken) {
+      router.push('/login')
+
+      return
+    }
   }
 
   return (
     <CardContent
       className={classnames('relative flex flex-col gap-5')}
       sx={{
-        border: popular ? '2px solid' : '1px solid',
-        borderColor: popular ? 'primary.main' : 'grey.300',
-        borderRadius: 3,
+        borderRadius: 1,
         p: popular ? 6 : 4,
         minHeight: popular ? 480 : 420,
         boxShadow: popular ? 4 : 1,
@@ -70,8 +70,9 @@ const PlanDetails = ({ data, popular = false }) => {
       <Button
         fullWidth
         color={data?.currentPlan ? 'success' : 'primary'}
-        variant={data?.popularPlan ? 'contained' : 'tonal'}
+        variant={popular ? 'contained' : 'tonal'}
         onClick={() => buyToken(data?.id)}
+        className={`${data?.popularPlan ? 'bg-primary' : ''}`}
       >
         Purchase ${parseFloat(data?.price).toFixed(2).replace(/\.00$/, '')}
       </Button>

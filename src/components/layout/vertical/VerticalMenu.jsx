@@ -64,6 +64,12 @@ const VerticalMenu = ({ scrollMenu }) => {
         <MenuItem href='/history' icon={<i className='icon-base ti 	tabler-receipt' />}>
           History
         </MenuItem>
+        <MenuItem href='/plans' icon={<i className='icon-base ti tabler-file-text' />}>
+          Plans
+        </MenuItem>
+        <MenuItem href='/purchased-plans' icon={<i className='icon-base ti tabler-shopping-cart' />}>
+          Purchased Plans
+        </MenuItem>
       </Menu>
     </ScrollWrapper>
   )

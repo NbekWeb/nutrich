@@ -24,8 +24,13 @@ const PricingPage = ({ title = true }) => {
 
   return (
     <>
-      <Card>
-        <CardContent className='xl:!plb-16 xl:pli-[6.25rem] pbs-10 pbe-5 pli-5 sm:p-16'>
+      <Card
+        sx={{
+          background: 'transparent',
+          boxShadow: 'none'
+        }}
+      >
+        <CardContent className='!p-0'>
           <Pricing data={pricingTokens} title={title} />
         </CardContent>
       </Card>

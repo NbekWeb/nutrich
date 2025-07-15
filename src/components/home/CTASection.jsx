@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 
 // Next Imports
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 // MUI Imports
 import Typography from '@mui/material/Typography'
@@ -29,6 +30,18 @@ const GetStarted = () => {
 
   // HOOKNI TO'G'RIDAN-TO'G'RI CHAQIRING!
   const getStartedImage = useImageVariant(mode, getStartedImageLight, getStartedImageDark) || getStartedImageLight
+
+  const router = useRouter()
+
+  function goStart() {
+    const accessToken = localStorage.getItem('access_token')
+
+    if (!accessToken) {
+      router.push('/login')
+
+      return
+    }
+  }
 
   const [mounted, setMounted] = useState(false)
 
@@ -60,7 +73,7 @@ const GetStarted = () => {
               Start your project with a 14-day free trial
             </Typography>
           </div>
-          <Button component={Link} href='/front-pages/payment' variant='contained'>
+          <Button onClick={goStart} variant='contained'>
             Get Started
           </Button>
         </div>

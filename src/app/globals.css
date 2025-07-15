@@ -132,3 +132,23 @@ code {
   background-color: rgb(var(--mui-palette-info-mainChannel) / 0.08);
   border: 0;
 }
+
+@media screen and (max-width: 600px) {
+  .mui-10hrgky-MuiPaper-root-MuiDialog-paper {
+    width: calc(100% - 20px) !important;
+  }
+  .mui-10hrgky-MuiPaper-root-MuiDialog-paper:not(.MuiDialog-paperFullScreen) {
+    margin: 0 !important;
+  }
+  .res-sm .mui-11nwm2k-MuiPaper-root-MuiAccordion-root.Mui-expanded {
+    box-shadow: none !important;
+  }
+  .res-sm .mui-1n59y0y-MuiButtonBase-root-MuiAccordionSummary-root.Mui-expanded,
+  .res-sm .mui-s2qhp9-MuiAccordionDetails-root,
+  .res-sm .mui-1n59y0y-MuiButtonBase-root-MuiAccordionSummary-root,
+  .res-sm .mui-11nwm2k-MuiPaper-root-MuiAccordion-root {
+    padding: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+}
