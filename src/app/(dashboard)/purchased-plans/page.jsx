@@ -184,9 +184,6 @@ const PurchasedPlansPage = () => {
 
     return (
       <Box sx={{ mt: 3 }}>
-        <Typography variant='h6' sx={{ mb: 2 }}>
-          Meal Plan Summary
-        </Typography>
         <Grid container spacing={2}>
           <Grid item xs={12} sm={4}>
             <Typography variant='body1'>
