@@ -68,7 +68,7 @@ const usePlans = create(set => ({
         callback()
       })
       .catch(error => {
-        toast.error('Failed to add plan')
+        console.log(error)
         toast.error('Failed to fetch plans')
       })
       .finally(() => {

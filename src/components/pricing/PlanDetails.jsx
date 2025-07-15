@@ -23,6 +23,10 @@ const PlanDetails = ({ data, popular = false }) => {
       router.push('/login')
 
       return
+    } else {
+      buyTokePrice({ token: id }, () => {
+        getUser()
+      })
     }
   }
 

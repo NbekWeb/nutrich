@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
+import { useRouter } from 'next/navigation'
+
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
 import Grid from '@mui/material/Grid'
@@ -51,6 +53,7 @@ const Plans = () => {
   const { loadingUrl } = useCoreStore()
   const { getPlans, plansData, buyPlan, addAiAssistant } = usePlans()
   const { user, getUser } = useUserStore()
+  const router = useRouter()
 
   // Modal state
   const [openModal, setOpenModal] = useState(false)
@@ -192,9 +195,9 @@ const Plans = () => {
       buyPlan(payload, () => {
         getUser()
         handleCloseModal()
+        router.push('/purchased-plans')
       })
     } else {
-      // Use addAiAssistant from usePlans store for non-purchase endpoints
       const payload = {
         plan_id: selectedPlan.id,
         request: request,
@@ -205,6 +208,7 @@ const Plans = () => {
       addAiAssistant(payload, () => {
         getUser()
         handleCloseModal()
+        router.push('/purchased-plans')
       })
     }
   }
@@ -247,7 +251,7 @@ const Plans = () => {
                       </Box>
 
                       {/* Plan Name */}
-                      <Typography variant='h5' className='mbe-2' fontWeight='bold'>
+                      <Typography variant='h6' className='mbe-2' fontWeight='bold'>
                         {plan?.plan_title}
                       </Typography>
 
@@ -340,11 +344,7 @@ const Plans = () => {
       </Card>
 
       <Dialog open={openModal} onClose={handleCloseModal} maxWidth='md' fullWidth>
-        <DialogTitle>
-          <Typography variant='h5' color='primary'>
-            {selectedPlan?.plan_title}
-          </Typography>
-        </DialogTitle>
+        <DialogTitle>{selectedPlan?.plan_title}</DialogTitle>
         <DialogContent>
           <Box mb={3}>
             <Typography variant='body1' color='text.secondary'>
@@ -557,7 +557,7 @@ const Plans = () => {
 
       <Backdrop
         sx={{ color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
-        open={loadingUrl.has('user-detail/') || loadingUrl.has('pricing-tokens/')}
+        open={loadingUrl.has('user-detail/') || loadingUrl.has('my-plans/') || loadingUrl.has('plans/')}
       >
         <CircularProgress color='inherit' />
       </Backdrop>

@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
+import { useRouter } from 'next/navigation'
+
 // MUI Imports
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -12,14 +14,18 @@ import AccordionSummary from '@mui/material/AccordionSummary'
 import AccordionDetails from '@mui/material/AccordionDetails'
 import Chip from '@mui/material/Chip'
 import Grid from '@mui/material/Grid'
+import Backdrop from '@mui/material/Backdrop'
+import CircularProgress from '@mui/material/CircularProgress'
 
 // Third-party Imports
 import classnames from 'classnames'
 
 // Store Imports
 import usePlans from '@/store/usePlans'
+import useCoreStore from '@/store/useCoreStore'
 
 const PurchasedPlansPage = () => {
+  const { loadingUrl } = useCoreStore()
   const { getMyPlans, myPlans } = usePlans()
   const [expandedPlan, setExpandedPlan] = useState(null)
 
@@ -183,91 +189,101 @@ const PurchasedPlansPage = () => {
     if (!summary) return null
 
     return (
-      <Box sx={{ mt: 3 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={4}>
-            <Typography variant='body1'>
-              <strong>Total Days:</strong> {summary.total_days || 0}
-            </Typography>
+      <>
+        <Box sx={{ mt: 3 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={4}>
+              <Typography variant='body1'>
+                <strong>Total Days:</strong> {summary.total_days || 0}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Typography variant='body1'>
+                <strong>Daily Calories:</strong> {summary.daily_calories || 0}
+              </Typography>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Typography variant='body1'>
+                <strong>Goal:</strong> {summary.goal || 'Not specified'}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={4}>
-            <Typography variant='body1'>
-              <strong>Daily Calories:</strong> {summary.daily_calories || 0}
-            </Typography>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <Typography variant='body1'>
-              <strong>Goal:</strong> {summary.goal || 'Not specified'}
-            </Typography>
-          </Grid>
-        </Grid>
-      </Box>
+        </Box>
+      </>
     )
   }
 
   return (
-    <Box sx={{ p: 3 }}>
-      <Typography variant='h4' sx={{ mb: 3 }}>
-        Purchased Plans
-      </Typography>
+    <>
+      <Box sx={{ p: 3 }}>
+        <Typography variant='h4' sx={{ mb: 3 }}>
+          Purchased Plans
+        </Typography>
 
-      {!myPlans || myPlans.length === 0 ? (
-        <Card>
-          <CardContent>
-            <Typography variant='body1'>No purchased plans found.</Typography>
-          </CardContent>
-        </Card>
-      ) : (
-        myPlans.map((plan, planIndex) => (
-          <div key={planIndex} className=' mb-3'>
-            <Accordion expanded={expandedPlan === planIndex} onChange={handlePlanChange(planIndex)} sx={{ mb: 2 }}>
-              <AccordionSummary aria-controls={`plan-${planIndex}-content`} id={`plan-${planIndex}-header`}>
-                <Typography variant='h5' className='font-medium'>
-                  {plan.plan_title || `Plan ${planIndex + 1}`}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails className='text-textSecondary'>
-                <div className='res-sm'>
-                  {plan?.meal_plan?.daily_meal_plans &&
-                    Object.entries(plan.meal_plan.daily_meal_plans).map(([dayKey, day]) => (
-                      <Accordion key={`${planIndex}-${dayKey}`} sx={{ mb: 2 }} defaultExpanded>
+        {!myPlans || myPlans.length === 0 ? (
+          <Card>
+            <CardContent>
+              <Typography variant='body1'>No purchased plans found.</Typography>
+            </CardContent>
+          </Card>
+        ) : (
+          myPlans.map((plan, planIndex) => (
+            <div key={planIndex} className=' mb-3'>
+              <Accordion expanded={expandedPlan === planIndex} onChange={handlePlanChange(planIndex)} sx={{ mb: 2 }}>
+                <AccordionSummary aria-controls={`plan-${planIndex}-content`} id={`plan-${planIndex}-header`}>
+                  <Typography variant='h5' className='font-medium'>
+                    {plan.plan_title || `Plan ${planIndex + 1}`}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails className='text-textSecondary'>
+                  <div className='res-sm'>
+                    {plan?.meal_plan?.daily_meal_plans &&
+                      Object.entries(plan.meal_plan.daily_meal_plans).map(([dayKey, day]) => (
+                        <Accordion key={`${planIndex}-${dayKey}`} sx={{ mb: 2 }} defaultExpanded>
+                          <AccordionSummary
+                            aria-controls={`${planIndex}-${dayKey}-content`}
+                            id={`${planIndex}-${dayKey}-header`}
+                          >
+                            <Typography variant='h5' className='font-medium'>
+                              {dayKey}
+                            </Typography>
+                          </AccordionSummary>
+                          <AccordionDetails className='text-textSecondary'>
+                            {renderDay(day, dayKey, planIndex)}
+                          </AccordionDetails>
+                        </Accordion>
+                      ))}
+                    {plan?.meal_plan?.meal_plan_summary && (
+                      <Accordion key={`summary-${planIndex}`} sx={{ mb: 2 }} defaultExpanded>
                         <AccordionSummary
-                          aria-controls={`${planIndex}-${dayKey}-content`}
-                          id={`${planIndex}-${dayKey}-header`}
+                          aria-controls={`summary-${planIndex}-content`}
+                          id={`summary-${planIndex}-header`}
                         >
                           <Typography variant='h5' className='font-medium'>
-                            {dayKey}
+                            Meal Plan Summary
                           </Typography>
                         </AccordionSummary>
                         <AccordionDetails className='text-textSecondary'>
-                          {renderDay(day, dayKey, planIndex)}
+                          {renderPlanSummary(plan.meal_plan.meal_plan_summary)}
                         </AccordionDetails>
                       </Accordion>
-                    ))}
-                  {plan?.meal_plan?.meal_plan_summary && (
-                    <Accordion key={`summary-${planIndex}`} sx={{ mb: 2 }} defaultExpanded>
-                      <AccordionSummary
-                        aria-controls={`summary-${planIndex}-content`}
-                        id={`summary-${planIndex}-header`}
-                      >
-                        <Typography variant='h5' className='font-medium'>
-                          Meal Plan Summary
-                        </Typography>
-                      </AccordionSummary>
-                      <AccordionDetails className='text-textSecondary'>
-                        {renderPlanSummary(plan.meal_plan.meal_plan_summary)}
-                      </AccordionDetails>
-                    </Accordion>
-                  )}
-                </div>
+                    )}
+                  </div>
 
-                {/* Meal Plan Summary inside family wrapper */}
-              </AccordionDetails>
-            </Accordion>
-          </div>
-        ))
-      )}
-    </Box>
+                  {/* Meal Plan Summary inside family wrapper */}
+                </AccordionDetails>
+              </Accordion>
+            </div>
+          ))
+        )}
+      </Box>
+      <Backdrop
+        sx={{ color: '#fff', zIndex: theme => theme.zIndex.drawer + 1 }}
+        open={loadingUrl.has('user-detail/') || loadingUrl.has('my-plans/') || loadingUrl.has('plans/')}
+      >
+        <CircularProgress color='inherit' />
+      </Backdrop>
+    </>
   )
 }
 

@@ -19,6 +19,8 @@ const AuthGuard = ({ children }) => {
       !pathname.includes('/info')
     ) {
       router.push('/home')
+    } else if (access_token && pathname.includes('/home')) {
+      router.push('/user')
     }
   }, [pathname, router])
 
