@@ -61,10 +61,10 @@ const useAuthStore = create(() => ({
       return
     }
 
-    addLoadingUrl('google/callback/')
+    addLoadingUrl('google/login/')
 
     api({
-      url: 'google/callback/',
+      url: 'google/login/',
       method: 'POST',
       data: { code }
     })
