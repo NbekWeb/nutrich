@@ -67,6 +67,8 @@ const Plans = () => {
   // Add serviceRequest state for purchase endpoint
   const [serviceRequest, setServiceRequest] = useState('')
 
+  // Add loading state for generate button
+
   useEffect(() => {
     getPlans()
   }, [getPlans])
@@ -545,12 +547,19 @@ const Plans = () => {
             variant='contained'
             onClick={handleGenerate}
             disabled={
-              isPurchaseEndpoint
+              loadingUrl.has('purchase/') ||
+              loadingUrl.has('plans/') ||
+              (isPurchaseEndpoint
                 ? familyMembers.some(member => !member.name || !member.age)
-                : !request.trim() || !adaptationDetails.trim()
+                : !request.trim() || !adaptationDetails.trim())
+            }
+            startIcon={
+              loadingUrl.has('purchase/') || loadingUrl.has('plans/') ? (
+                <CircularProgress size={16} color='inherit' />
+              ) : null
             }
           >
-            Generate
+            {loadingUrl.has('purchase/') || loadingUrl.has('plans/') ? 'Generating...' : 'Generate'}
           </Button>
         </DialogActions>
       </Dialog>
