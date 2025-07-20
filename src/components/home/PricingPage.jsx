@@ -109,7 +109,7 @@ const Pricing = ({ data }) => {
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex flex-col justify-center items-center gap-2'>
-        <Typography variant='h3'>Pricing Plans</Typography>
+        <Typography variant='h3'>Pricing Plans </Typography>
         <div className='flex items-center text-center flex-col  sm:mbe-[3.8rem]'>
           <Typography>
             All plans include 40+ advanced tools and features to boost your product. Choose the best plan to fit your
@@ -140,13 +140,15 @@ const Pricing = ({ data }) => {
           </div>
         </div>
       </div>
-      <Grid container spacing={6}>
-        {data?.map((plan, index) => (
-          <Grid item xs={12} md={4} key={index}>
-            <PlanDetails data={plan} pricingPlan={pricingPlan} />
-          </Grid>
-        ))}
-      </Grid>
+      <div className='container mx-auto px-6 '>
+        <Grid spacing={6}>
+          {data?.map((plan, index) => (
+            <Grid item xs={12} md={4} key={index}>
+              <PlanDetails data={plan} pricingPlan={pricingPlan} />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
     </div>
   )
 }

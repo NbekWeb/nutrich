@@ -34,15 +34,17 @@ const Pricing = ({ data, title = true }) => {
   return (
     <div className='flex flex-col gap-6'>
       <div className='flex flex-col justify-center items-center gap-2'>
-        <Typography variant='h3'>Pricing Plans</Typography>
+        <Typography variant='h3'>Pricing Plans </Typography>
       </div>
-      <Grid container spacing={6}>
-        {data?.map((plan, index) => (
-          <Grid item xs={12} md={4} key={index}>
-            <PlanDetails data={plan} popular={index == 1} pricingPlan={pricingPlan} />
-          </Grid>
-        ))}
-      </Grid>
+      <div className='container mx-auto px-6 '>
+        <Grid spacing={6} container>
+          {data?.map((plan, index) => (
+            <Grid item xs={12} md={4} key={index}>
+              <PlanDetails data={plan} popular={index == 1} pricingPlan={pricingPlan} />
+            </Grid>
+          ))}
+        </Grid>
+      </div>
     </div>
   )
 }
