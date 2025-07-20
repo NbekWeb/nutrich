@@ -13,7 +13,8 @@ import {
   StatisticsSection,
   TestimonialsSection,
   FAQSection,
-  CTASection
+  CTASection,
+  ContactUs
 } from './components'
 import Pricing from '@/components/pricing'
 
@@ -45,6 +46,7 @@ const LandingPage = () => {
       <TestimonialsSection mode={mode} />
       <FAQSection mode={mode} />
       <CTASection mode={mode} />
+      <ContactUs mode={mode} />
       <Footer mode={mode} />
       <style>{`
   .gradient-text {

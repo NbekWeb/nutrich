@@ -1,7 +1,7 @@
 'use client'
 
 // React Imports
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 // Next Imports
 import { useRouter } from 'next/navigation'
@@ -59,11 +59,10 @@ const MaskImg = styled('img')({
   zIndex: -1
 })
 
-const LoginV2 = ({ mode }) => {
-  const { loginApi } = useAuthStore()
+const LoginV2 = ({ mode, loading = false }) => {
   const { loadingUrl } = useCoreStore()
+  const { loginApi, loginGoogle, postGoogleLogin } = useAuthStore()
 
-  // States
   const [isPasswordShown, setIsPasswordShown] = useState(false)
 
   const [form, setForm] = useState({
@@ -85,8 +84,8 @@ const LoginV2 = ({ mode }) => {
     if (!form.password.trim()) newErrors.password = 'Password is required'
 
     setErrors(newErrors)
-    
-return Object.keys(newErrors).length === 0
+
+    return Object.keys(newErrors).length === 0
   }
 
   const handleSubmit = e => {
@@ -97,6 +96,10 @@ return Object.keys(newErrors).length === 0
         router.push('/user')
       })
     }
+  }
+
+  function loginWithGoogle() {
+    loginGoogle()
   }
 
   // Vars
@@ -123,6 +126,14 @@ return Object.keys(newErrors).length === 0
   )
 
   const handleClickShowPassword = () => setIsPasswordShown(show => !show)
+
+  useEffect(() => {
+    if (loading) {
+      postGoogleLogin(window.location.href, () => {
+        router.push('/user')
+      })
+    } 
+  }, [loading, postGoogleLogin, router])
 
   return (
     <div className='flex bs-full justify-center'>
@@ -200,7 +211,7 @@ return Object.keys(newErrors).length === 0
             </div>
             <Divider className='gap-2 text-textPrimary'>or</Divider>
 
-            <Button fullWidth variant='contained' color='error'>
+            <Button onClick={() => loginWithGoogle()} fullWidth variant='contained' color='error'>
               <i className='tabler-brand-google-filled' />
               Sign in with Google
             </Button>

@@ -239,7 +239,7 @@ const PurchasedPlansPage = () => {
                   <div className='res-sm'>
                     {plan?.meal_plan?.daily_meal_plans &&
                       Object.entries(plan.meal_plan.daily_meal_plans).map(([dayKey, day]) => (
-                        <Accordion key={`${planIndex}-${dayKey}`} sx={{ mb: 2 }} defaultExpanded>
+                        <Accordion key={`${planIndex}-${dayKey}`} sx={{ mb: 2 }}>
                           <AccordionSummary
                             aria-controls={`${planIndex}-${dayKey}-content`}
                             id={`${planIndex}-${dayKey}-header`}

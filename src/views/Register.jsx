@@ -256,12 +256,12 @@ const Register = ({ mode }) => {
                 Sign in instead
               </Typography>
             </div>
-            <Divider className='gap-2 text-textPrimary'>or</Divider>
+            {/* <Divider className='gap-2 text-textPrimary'>or</Divider> */}
 
-            <Button fullWidth variant='contained' color='error'>
+            {/* <Button fullWidth variant='contained' color='error'>
               <i className='tabler-brand-google-filled' />
               Sign up with Google
-            </Button>
+            </Button> */}
           </form>
         </div>
       </div>
